@@ -1,21 +1,22 @@
-SRC = main.cpp
-OBJS = ${SRC=.o:.cpp}
-CFLAGS = -Wall -Wextra -Werror
-NAME = Temp
-CC = c++ -std=c++98
-RM = rm -rf 
+SRC = PmergeMe.cpp rec.cpp Dmerge.cpp
+OBJS = ${SRC:.cpp=.o}
+CC =  c++ -std=c++98
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+NAME = PmergeMe
+RM = rm -rf
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o : %.cpp Array.hpp
-	$(CC) $(CFLAGS) $(SRC) -c $< -o $@
-
-re : fclean all
+%.o : %.cpp PmergeMe.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean : 
 	$(RM) $(OBJS)
-fclean : clean
+
+fclean : clean 
 	$(RM) $(NAME)
+
+re : clean all

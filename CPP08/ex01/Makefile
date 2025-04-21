@@ -1,21 +1,22 @@
-SRC = main.cpp
-OBJS = ${SRC=.o:.cpp}
-CFLAGS = -Wall -Wextra -Werror
-NAME = Temp
-CC = c++ -std=c++98
+SRC  = main.cpp  Span.cpp
+OBJS = $(SRC=.o:.cpp)
+NAME = cont
 RM = rm -rf 
+CC = c++ 
+CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
-%.o : %.cpp iter.hpp
+%.o : %.cpp Span.hpp
 	$(CC) $(CFLAGS) $(SRC) -c $< -o $@
-
-re : fclean all
 
 clean : 
 	$(RM) $(OBJS)
+
 fclean : clean
 	$(RM) $(NAME)
+
+re : fclean all 

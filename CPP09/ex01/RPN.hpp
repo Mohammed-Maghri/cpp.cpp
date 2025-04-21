@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 11:38:39 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/09/30 18:09:05 by mmaghri          ###   ########.fr       */
+/*   Created: 2024/11/13 10:35:56 by mmaghri           #+#    #+#             */
+/*   Updated: 2024/12/01 15:01:51 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#pragma once 
+
+#include <stack>
 #include <iostream>
-#include <string>
+#include <sstream>
 
-template <typename T>
-void funct(T print){
-    std::cout << "Print Value " << print << std::endl ;
+class RPN {
+    public :
+        RPN(){};
+        RPN(RPN &value){
+            (void)value ;
+        };
+        RPN& operator = (RPN &value){
+            (void)value ;
+            return (*this);
+        };
+        ~RPN(){};
+        std::stack<int> ElementStored ;
 };
 
-template <typename T, typename L, typename F>
-
-void iter (T *Array, L lent, F func){
-    for (int i = 0; i < lent; i++){
-        func(Array[i]);
-    }
-};
+int notOneOfThose(std::string value);
+int functionMakeSign (std::string sign, int first, int second);

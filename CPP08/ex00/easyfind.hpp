@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   temp.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 11:00:06 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/09/30 18:09:01 by mmaghri          ###   ########.fr       */
+/*   Created: 2024/10/01 12:27:23 by mmaghri           #+#    #+#             */
+/*   Updated: 2024/10/03 14:42:51 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
+#pragma once 
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <vector>
+
 
 template <typename T>
 
-void swap(T &a, T &b){
-    T swaped ;
-    swaped = a ;
-    a = b ;
-    b = swaped ;
-};
-
-template <typename T>
-
-T min(T a, T b)  { 
-    if (a < b)
-        return (a);
-    return (b);
-};
-
-template <typename T>
-
-T max(T a, T b)  {
-    if (a > b)
-        return (a);
-    return (b);
+void easyfind (T value, int secvalue){
+    typename T::iterator it = std::find(value.begin(), value.end(), secvalue) ;
+    (it != value.end()) ? 
+    (std::cout << "Element Found !" << std::endl) 
+    : (std::cout << "Element Not Found !" << std::endl);
 };

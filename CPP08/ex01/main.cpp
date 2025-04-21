@@ -5,41 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaghri <mmaghri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 11:57:34 by mmaghri           #+#    #+#             */
-/*   Updated: 2024/09/30 17:57:31 by mmaghri          ###   ########.fr       */
+/*   Created: 2024/10/02 11:42:55 by mmaghri           #+#    #+#             */
+/*   Updated: 2024/10/03 16:38:23 by mmaghri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "Span.hpp"
 
-class Awesome
+int main()
 {
-  public:
-    Awesome( void ) : _n( 42 ) { return; }
-    int get( void ) const { return this->_n; }
-  private:
-    int _n;
-};
-
-std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
-{
-  o << rhs.get();
-  return o;
-}
-
-template< typename T >
-void print( T& x )
-{
-  std::cout << x << std::endl;
-  return;
-}
-
-int main() {
-  int tab[] = { 0, 1, 2, 3, 4 };
-  Awesome tab2[5];
-
-  iter( tab, 5, print<const int> );
-  iter( tab2, 5, print<Awesome> );
-
-  return 0;
+   Span sp = Span(5);
+   try {
+    sp.addNumber(6);
+    sp.addNumber(3);
+    sp.addNumber(17);
+    sp.addNumber(9);
+    sp.addNumber(11);
+    std::cout << sp.shortestSpan() << std::endl;
+    std::cout << sp.longestSpan() << std::endl;
+   } catch (std::exception &e){
+    std::cout << e.what() << std::endl;
+   };
+    return 0;
 }
